@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zetta Core - Notebook Gamer RTX 4060</title>
+    <link rel="stylesheet" href="assets/css/produto.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <app-header></app-header>
+
+    <main class="product-page">
+        <div class="back-container">
+            <a href="index.html" class="back-link">&larr; Voltar</a>
+        </div>
+
+        <div class="product-container">
+            <section class="image-section">
+                <img id="productImg">
+            </section>
+
+            <section class="details-section">
+                <span id="productTag" class="product-tag">Produto Não Disponível</span>
+                <h1 id="productTitle" class="product-title">Erro</h1>
+                <div id="productPrice" class="product-price">R$ 0,00</div>
+                
+                <p id="productDescription" class="product-description">
+                    Desculpe, o produto que você está procurando não está disponível no momento. Por favor, volte para a página inicial e explore nossos outros produtos incríveis!    
+                </p>
+                
+                <ul class="product-benefits">
+                    <li><span class="check">&check;</span> Frete grátis em pedidos acima de R$ 500</li>
+                    <li><span class="check">&check;</span> Garantia de 30 dias</li>
+                    <li><span class="check">&check;</span> Pagamento seguro</li>
+                </ul>
+
+                <div class="product-actions">
+                    <button class="btn-cart add-to-cart" id="addToCartBtn" disabled>
+                        <span>&#128722;</span> Adicionar ao Carrinho
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <app-footer></app-footer>
+</body>
+<script type="module" src="assets/js/app.js"></script>
+<script type="module">
+    import { getProductById } from './assets/js/produtos.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id'));
+        const product = getProductById(productId);
+
+        if (product) {
+            document.getElementById('productImg').src = product.imagem_url;
+            document.getElementById('productImg').alt = product.nome;
+            document.getElementById('productTitle').textContent = product.nome;
+            document.getElementById('productPrice').textContent = `R$ ${product.preco.toFixed(2).replace('.', ',')}`;
+            document.getElementById('productDescription').textContent = product.descricao || 'Produto de alta qualidade da Zetta Core, com garantia e envio rápido.';
+            document.getElementById('productTag').textContent = product.categoria;
+
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            addToCartBtn.disabled = false;
+            addToCartBtn.setAttribute('data-product-id', product.id);
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página inicial</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+    <app-header></app-header>
+    <main>
+        <div class="index-container">
+            <section class="initial-message">
+                <div class="container">
+                    <h1>Tecnologia de Ponta</h1>
+                    <p>Os melhores produtos de informática e hardware com os preços mais competitivos do mercado. Qualidade e performance garantidas.</p>
+                </div>
+            </section>
+
+            <section class="container about-section" id="sobre">
+                <div class="about-grid">
+                    <div><h3>Preço competitivo</h3><p>Hardware e periféricos com os melhores valores do mercado.</p></div>
+                    <div><h3>Compra segura</h3><p>Pagamento protegido e garantia de 30 dias em todos os produtos.</p></div>
+                    <div><h3>Frete grátis</h3><p>Entrega sem custo em todo o Brasil.</p></div>
+                </div>
+            </section>
+
+            <section class="container products-container" id="produtos">
+                <div class="products-header">
+                    <div>
+                        <h2>Produtos em Destaque</h2>
+                        <p>Os melhores produtos selecionados para você</p>
+                    </div>
+                    <div class="products-filters">
+                        <input type="search" id="searchInput" placeholder="Buscar produto..." aria-label="Buscar produto">
+                        <select id="categoryFilter" aria-label="Filtrar por categoria">
+                            <option value="">Todas as categorias</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="products-list" id="productsList"></div>
+            </section>
+        </div>
+    </main>
+    <app-footer></app-footer>
+</body>
+<script type="module" src="assets/js/app.js"></script>
+<script type="module" src="assets/js/produtos.js"></script>
+</html>
