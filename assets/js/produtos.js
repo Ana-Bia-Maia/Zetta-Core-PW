@@ -11,9 +11,9 @@ export function getCustomProducts() {
   }
 }
 
-/** cadastro e remocaode produstos */
 export const products = [...baseProducts, ...getCustomProducts()];
 
+/** cadastro e remocaode produstos */
 export function addCustomProduct({ nome, preco, categoria, imagem_url, descricao, estoque }) {
   const custom = getCustomProducts();
   const nextId = Math.max(99, ...custom.map((p) => p.id)) + 1;
