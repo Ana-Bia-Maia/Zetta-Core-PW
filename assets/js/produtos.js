@@ -11,7 +11,7 @@ export function getCustomProducts() {
   }
 }
 
-/** Catálogo final = produtos fixos + produtos cadastrados no localStorage. */
+/** cadastro e remocaode produstos */
 export const products = [...baseProducts, ...getCustomProducts()];
 
 export function addCustomProduct({ nome, preco, categoria, imagem_url, descricao, estoque }) {
